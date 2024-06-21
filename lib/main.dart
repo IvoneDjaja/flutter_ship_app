@@ -1,3 +1,4 @@
+import 'package:feedback_sentry/feedback_sentry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_ship_app/app_routes.dart';
@@ -34,7 +35,7 @@ Future<void> runMainApp() async {
   runApp(
     UncontrolledProviderScope(
       container: container,
-      child: MainApp(),
+      child: const BetterFeedback(child: MainApp()),
     ),
   );
 }

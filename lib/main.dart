@@ -12,6 +12,7 @@ import 'package:flutter_ship_app/src/domain/app.dart';
 import 'package:flutter_ship_app/src/domain/epic.dart';
 import 'package:flutter_ship_app/src/monitoring/analytics_facade.dart';
 import 'package:flutter_ship_app/src/monitoring/logger_navigator_observer.dart';
+import 'package:flutter_ship_app/src/monitoring/mixpanel_analytics_client.dart';
 import 'package:flutter_ship_app/src/presentation/create_edit_app_screen.dart';
 import 'package:flutter_ship_app/src/presentation/epics_checklist_screen.dart';
 import 'package:flutter_ship_app/src/presentation/settings_screen.dart';
@@ -58,6 +59,8 @@ Future<void> runMainApp() async {
   await container.read(sharedPreferencesProvider.future);
   // Preload any other FutureProviders what will be used with requireValue later
   await container.read(packageInfoProvider.future);
+  // * Preload MixpanelAnalyticsClient, so we can make unawaited analytics calls
+  await container.read(mixpanelAnalyticsClientProvider.future);
   runApp(
     UncontrolledProviderScope(
       container: container,

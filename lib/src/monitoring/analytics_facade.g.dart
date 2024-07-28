@@ -49,4 +49,4 @@ final class AnalyticsFacadeProvider
   }
 }
 
-String _$analyticsFacadeHash() => r'eadb23e9a555ef2d84fad6a27a11353ef766dfe9';
+String _$analyticsFacadeHash() => r'42be3f71a863cfd3e4652bc1ca9059022b5402ed';

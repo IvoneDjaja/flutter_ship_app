@@ -23,6 +23,8 @@ dependencies:
   shared_preferences: 2.5.3
   auto_size_text: 3.0.0
   package_info_plus: 9.0.0
+  url_launcher: 6.3.2
+  force_update_helper: 0.3.0 
   dio: 5.9.0
   sentry_flutter: 9.8.0
   sentry_dio: 9.8.0

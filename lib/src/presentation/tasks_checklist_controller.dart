@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_ship_app/src/data/app_database.dart';
 import 'package:flutter_ship_app/src/data/app_database_crud.dart';
+import 'package:flutter_ship_app/src/data/in_app_rating_service.dart';
 import 'package:flutter_ship_app/src/monitoring/analytics_facade.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -28,6 +29,7 @@ class TasksChecklistController extends _$TasksChecklistController {
   }) async {
     final db = ref.read(appDatabaseProvider);
     final analyticsFacade = ref.read(analyticsFacadeProvider);
+    final inAppRatingService = ref.read(inAppRatingServiceProvider);
     await db.updateTaskCompletionStatus(
       appId: appId,
       taskId: taskId,
@@ -35,6 +37,10 @@ class TasksChecklistController extends _$TasksChecklistController {
     );
     if (isCompleted) {
       final completedTasksCount = await db.fetchCompletedTasksCount();
+      // * Show app review prompt based on some conditional logic
+      await inAppRatingService.requestReviewIfNeeded(
+        completedTasksCount: completedTasksCount,
+      );
       unawaited(
         analyticsFacade.trackTaskCompleted(completedTasksCount),
       );

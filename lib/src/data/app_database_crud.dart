@@ -118,6 +118,17 @@ extension AppDatabaseCRUD on AppDatabase {
     });
   }
 
+  /// Delete all apps and their associated data
+  Future<void> deleteAllApps() async {
+    await transaction(() async {
+      // Delete all TaskStatuses
+      await delete(taskStatuses).go();
+
+      // Delete all Apps
+      await delete(apps).go();
+    });
+  }
+
   // *************** Epics *****************
 
   /// Check if the epics table is empty (used by the app startup logic)

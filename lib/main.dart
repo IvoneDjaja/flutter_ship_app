@@ -71,6 +71,8 @@ Future<void> runMainApp({required FirebaseOptions firebaseOptions}) async {
   await container.read(packageInfoProvider.future);
   // * Preload MixpanelAnalyticsClient, so we can make unawaited analytics calls
   await container.read(mixpanelAnalyticsClientProvider.future);
+  // * Preload FirebaseRemoteConfig (needed for A/B testing)
+  await container.read(firebaseRemoteConfigProvider.future);
   runApp(
     UncontrolledProviderScope(
       container: container,

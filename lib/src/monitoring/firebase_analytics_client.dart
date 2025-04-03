@@ -1,5 +1,4 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_ship_app/src/monitoring/analytics_client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -27,13 +26,18 @@ class FirebaseAnalyticsClient implements AnalyticsClient {
   @override
   Future<void> trackScreenView(String routeName, String action) async {
     await _analytics.logScreenView(
-        screenName: 'screen_view',
-        parameters: {'name': routeName, 'action': action});
+      screenName: 'screen_view',
+      parameters: {'name': routeName, 'action': action},
+    );
   }
 
   @override
-  Future<void> trackNewAppHome() async {
-    await _analytics.logEvent(name: 'new_app_home');
+  Future<void> trackNewApp({required bool usingFAB}) async {
+    await _analytics.logEvent(
+      name: 'new_app',
+      // * Convert boolean to integer for Firebase Analytics
+      parameters: {'using_fab': usingFAB ? 1 : 0},
+    );
   }
 
   @override
@@ -59,7 +63,9 @@ class FirebaseAnalyticsClient implements AnalyticsClient {
   @override
   Future<void> trackTaskCompleted(int completedCount) async {
     await _analytics.logEvent(
-        name: 'task_completed', parameters: {'count': completedCount});
+      name: 'task_completed',
+      parameters: {'count': completedCount},
+    );
   }
 }
 

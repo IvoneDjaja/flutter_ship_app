@@ -20,11 +20,13 @@ part 'app_startup.g.dart';
 @riverpod
 class AppStartupNotifier extends _$AppStartupNotifier {
   @override
-  Future<void> build() async {
+  Future<bool> build() async {
     // Initially, load the database from JSON
     await _updateDatabaseFromJsonTemplate();
     // Preload any other FutureProviders what will be used with requireValue later
     await ref.watch(packageInfoProvider.future);
+    // return true (workaround for https://github.com/rrousselGit/riverpod/issues/4282)
+    return true;
   }
 
   Future<void> _updateDatabaseFromJsonTemplate() async {
@@ -57,7 +59,10 @@ class AppStartupNotifier extends _$AppStartupNotifier {
   }
 
   Future<void> retry() async {
-    state = await AsyncValue.guard(_updateDatabaseFromJsonTemplate);
+    state = await AsyncValue.guard(() async {
+      await _updateDatabaseFromJsonTemplate();
+      return true;
+    });
   }
 }
 

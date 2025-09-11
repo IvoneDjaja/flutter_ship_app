@@ -17,7 +17,7 @@ const appStartupProvider = AppStartupNotifierProvider._();
 /// App startup provider and widget (below)
 /// For more info, read: https://codewithandrea.com/articles/robust-app-initialization-riverpod/
 final class AppStartupNotifierProvider
-    extends $AsyncNotifierProvider<AppStartupNotifier, void> {
+    extends $AsyncNotifierProvider<AppStartupNotifier, bool> {
   /// App startup provider and widget (below)
   /// For more info, read: https://codewithandrea.com/articles/robust-app-initialization-riverpod/
   const AppStartupNotifierProvider._()
@@ -40,26 +40,26 @@ final class AppStartupNotifierProvider
 }
 
 String _$appStartupNotifierHash() =>
-    r'0171b2ec59657b7ea45fe4285700e130a8b1eb74';
+    r'c6a9e90fd4d7b1aac0325bafcd34f6fa3dc0597e';
 
 /// App startup provider and widget (below)
 /// For more info, read: https://codewithandrea.com/articles/robust-app-initialization-riverpod/
 
-abstract class _$AppStartupNotifier extends $AsyncNotifier<void> {
-  FutureOr<void> build();
+abstract class _$AppStartupNotifier extends $AsyncNotifier<bool> {
+  FutureOr<bool> build();
   @$mustCallSuper
   @override
   void runBuild() {
-    build();
-    final ref = this.ref as $Ref<AsyncValue<void>, void>;
+    final created = build();
+    final ref = this.ref as $Ref<AsyncValue<bool>, bool>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<AsyncValue<void>, void>,
-              AsyncValue<void>,
+              AnyNotifier<AsyncValue<bool>, bool>,
+              AsyncValue<bool>,
               Object?,
               Object?
             >;
-    element.handleValue(ref, null);
+    element.handleValue(ref, created);
   }
 }

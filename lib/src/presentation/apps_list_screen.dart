@@ -23,7 +23,7 @@ class AppsListScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final appsListAsync = ref.watch(watchAppsListProvider);
-    final appsListNotEmpty = appsListAsync.valueOrNull?.isNotEmpty == true;
+    final appsListNotEmpty = appsListAsync.value?.isNotEmpty == true;
     final scrollController = ScrollController();
     return Scaffold(
       appBar: AppBar(
@@ -70,7 +70,7 @@ class AppsListView extends ConsumerWidget {
     // * The totalTasksCount is the same for all apps, because tasks are loaded
     // * from the same template. So we can watch it here and pass it to each
     // * AppListTile below.
-    final totalTasksCount = ref.watch(watchTotalTasksCountProvider).valueOrNull;
+    final totalTasksCount = ref.watch(watchTotalTasksCountProvider).value;
     final appsListAsync = ref.watch(watchAppsListProvider);
     return appsListAsync.when(
       data: (appsList) {
@@ -83,7 +83,7 @@ class AppsListView extends ConsumerWidget {
           return ListView.separated(
             controller: controller,
             itemCount: appsList.length,
-            separatorBuilder: (_, __) => const Divider(height: 0.5),
+            separatorBuilder: (_, _) => const Divider(height: 0.5),
             itemBuilder: (_, index) {
               final app = appsList[index];
               return AppListTile(
@@ -115,7 +115,7 @@ class AppListTile extends ConsumerWidget {
     final completedCountAsync = ref.watch(
       watchCompletedTasksCountProvider(appId: app.id),
     );
-    final completedCount = completedCountAsync.valueOrNull ?? 0;
+    final completedCount = completedCountAsync.value ?? 0;
     return CustomCompletionListTile(
       title: app.name,
       // * use 1 as fallback to prevent division by 0

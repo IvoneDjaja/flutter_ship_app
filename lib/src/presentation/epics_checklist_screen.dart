@@ -18,8 +18,7 @@ class EpicsChecklistScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // * The app name can change during editing, so here we
     // * watch it and rebuild as needed
-    final updatedApp =
-        ref.watch(watchAppByIdProvider(app.id)).valueOrNull ?? app;
+    final updatedApp = ref.watch(watchAppByIdProvider(app.id)).value ?? app;
     final scrollController = ScrollController();
     return Scaffold(
       appBar: AppBar(
@@ -74,7 +73,7 @@ class EpicsChecklistListView extends ConsumerWidget {
       data: (epics) => ListView.separated(
         controller: controller,
         itemCount: epics.length,
-        separatorBuilder: (_, __) => const Divider(height: 0.5),
+        separatorBuilder: (_, _) => const Divider(height: 0.5),
         itemBuilder: (_, index) {
           final epic = epics[index];
           return EpicListTile(app: app, epic: epic);
@@ -98,7 +97,7 @@ class EpicListTile extends ConsumerWidget {
       watchCompletedTasksCountProvider(appId: app.id, epicId: epic.id),
     );
     // * default to 0 during loading or if there is an error
-    final completedCount = completedCountAsync.valueOrNull ?? 0;
+    final completedCount = completedCountAsync.value ?? 0;
     return CustomCompletionListTile(
       title: epic.name,
       totalCount: epic.tasks.length,

@@ -25,7 +25,7 @@ class TasksChecklistScreen extends ConsumerWidget {
     final tasksAsync = ref.watch(
       watchTasksForAppAndEpicProvider(appId: app.id, epicId: epic.id),
     );
-    final tasks = tasksAsync.valueOrNull ?? epic.tasks;
+    final tasks = tasksAsync.value ?? epic.tasks;
     final scrollController = ScrollController();
     return Scaffold(
       appBar: AppBar(

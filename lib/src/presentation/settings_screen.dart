@@ -79,7 +79,7 @@ class ThemeSelectorListTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final themeMode = ref.watch(appThemeModeNotifierProvider);
+    final themeMode = ref.watch(appThemeModeProvider);
     return Padding(
       padding: const EdgeInsets.all(Sizes.p16),
       child: Column(
@@ -94,7 +94,7 @@ class ThemeSelectorListTile extends ConsumerWidget {
             selected: {themeMode},
             onSelectionChanged: (Set<ThemeMode> newSelection) {
               ref
-                  .read(appThemeModeNotifierProvider.notifier)
+                  .read(appThemeModeProvider.notifier)
                   // ignore:avoid-unsafe-collection-methods
                   .setThemeMode(newSelection.single);
             },

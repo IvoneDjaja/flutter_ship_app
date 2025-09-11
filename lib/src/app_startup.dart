@@ -68,7 +68,7 @@ class AppStartupWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // 1. eagerly initialize appStartupProvider (and all the providers it depends on)
-    final appStartupState = ref.watch(appStartupNotifierProvider);
+    final appStartupState = ref.watch(appStartupProvider);
     return appStartupState.when(
       // 2. loading state
       loading: () => const AppStartupLoadingWidget(),
@@ -80,7 +80,7 @@ class AppStartupWidget extends ConsumerWidget {
                   .hardcoded,
           // 4. invalidate the appStartupProvider
           onRetry: () async {
-            await ref.read(appStartupNotifierProvider.notifier).retry();
+            await ref.read(appStartupProvider.notifier).retry();
           },
         );
       },

@@ -1,5 +1,4 @@
 import 'package:drift/drift.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 // Conditional import implementation based on the Drift Flutter web example:
 // https://github.com/simolus3/drift/tree/develop/examples/app

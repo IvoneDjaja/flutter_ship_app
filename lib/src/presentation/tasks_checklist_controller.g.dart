@@ -54,7 +54,7 @@ final class TasksChecklistControllerProvider
 }
 
 String _$tasksChecklistControllerHash() =>
-    r'2172dadbfe6def254986394ce69e465955720ff6';
+    r'a7d4a008531f172d3a1f0ba9ed23ccc499b6d2d0';
 
 /// Helper controller class for the TasksChecklistScreen widget.
 /// This class holds the business logic updating the task completion status

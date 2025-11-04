@@ -9,12 +9,14 @@ class Task {
     final id = json['id'];
     if (id is! String) {
       throw FormatException(
-          'Invalid JSON: required "id" field of type String in $json');
+        'Invalid JSON: required "id" field of type String in $json',
+      );
     }
     final name = json['name'];
     if (name is! String) {
       throw FormatException(
-          'Invalid JSON: required "name" field of type String in $json');
+        'Invalid JSON: required "name" field of type String in $json',
+      );
     }
     // * Note: completed flag doesn't exist in the JSON and will be ignored
     // * when syncing with the DB

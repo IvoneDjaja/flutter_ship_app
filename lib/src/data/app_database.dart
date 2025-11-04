@@ -60,12 +60,14 @@ class TaskStatuses extends Table {
 }
 
 /// The database class declaring all the tables used in this project
-@DriftDatabase(tables: [
-  Apps,
-  Epics,
-  Tasks,
-  TaskStatuses,
-])
+@DriftDatabase(
+  tables: [
+    Apps,
+    Epics,
+    Tasks,
+    TaskStatuses,
+  ],
+)
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(impl.connect());
 

@@ -23,7 +23,9 @@ class TasksChecklistController extends _$TasksChecklistController {
     required String taskId,
     required bool isCompleted,
   }) async {
-    await ref.read(appDatabaseProvider).updateTaskCompletionStatus(
+    await ref
+        .read(appDatabaseProvider)
+        .updateTaskCompletionStatus(
           appId: appId,
           taskId: taskId,
           isCompleted: isCompleted,

@@ -98,8 +98,9 @@ class ThemeSelectorListTile extends ConsumerWidget {
                   // ignore:avoid-unsafe-collection-methods
                   .setThemeMode(newSelection.single);
             },
-            segments: ThemeMode.values
-                .map<ButtonSegment<ThemeMode>>((ThemeMode theme) {
+            segments: ThemeMode.values.map<ButtonSegment<ThemeMode>>((
+              ThemeMode theme,
+            ) {
               // Capitalize first letter
               final label =
                   theme.name[0].toUpperCase() + theme.name.substring(1);

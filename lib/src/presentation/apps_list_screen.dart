@@ -44,7 +44,7 @@ class AppsListScreen extends ConsumerWidget {
               Icons.add,
               semanticLabel: 'Create a new app'.hardcoded,
             ),
-          )
+          ),
         ],
       ),
       body: ResponsiveCenterScrollable(
@@ -112,8 +112,9 @@ class AppListTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final completedCountAsync =
-        ref.watch(watchCompletedTasksCountProvider(appId: app.id));
+    final completedCountAsync = ref.watch(
+      watchCompletedTasksCountProvider(appId: app.id),
+    );
     final completedCount = completedCountAsync.valueOrNull ?? 0;
     return CustomCompletionListTile(
       title: app.name,
@@ -188,7 +189,7 @@ class WelcomeAppIntro extends StatelessWidget {
           ElevatedButton(
             onPressed: onNewApp,
             child: Text('New App'.hardcoded),
-          )
+          ),
         ],
       ),
     );
@@ -210,8 +211,10 @@ class ExampleListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.symmetric(horizontal: Sizes.p20, vertical: Sizes.p4),
+      padding: const EdgeInsets.symmetric(
+        horizontal: Sizes.p20,
+        vertical: Sizes.p4,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

@@ -11,16 +11,20 @@ import 'package:flutter_ship_app/src/presentation/tasks_checklist_controller.dar
 
 /// Screen for showing a list of tasks for a given epic
 class TasksChecklistScreen extends ConsumerWidget {
-  const TasksChecklistScreen(
-      {super.key, required this.app, required this.epic});
+  const TasksChecklistScreen({
+    super.key,
+    required this.app,
+    required this.epic,
+  });
   final App app;
   final Epic epic;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // * Watch tasks and rebuild the UI if their completion status changes
-    final tasksAsync = ref
-        .watch(watchTasksForAppAndEpicProvider(appId: app.id, epicId: epic.id));
+    final tasksAsync = ref.watch(
+      watchTasksForAppAndEpicProvider(appId: app.id, epicId: epic.id),
+    );
     final tasks = tasksAsync.valueOrNull ?? epic.tasks;
     final scrollController = ScrollController();
     return Scaffold(
@@ -58,11 +62,12 @@ class TasksChecklistScreen extends ConsumerWidget {
 
 /// A widget for updating the status of a task using a checkbox
 class CheckboxTaskListTile extends StatelessWidget {
-  const CheckboxTaskListTile(
-      {super.key,
-      required this.task,
-      required this.completed,
-      required this.onChanged});
+  const CheckboxTaskListTile({
+    super.key,
+    required this.task,
+    required this.completed,
+    required this.onChanged,
+  });
   final Task task;
   final bool completed;
   final ValueChanged<bool>? onChanged;
@@ -82,7 +87,11 @@ class CheckboxTaskListTile extends StatelessWidget {
       ),
       controlAffinity: ListTileControlAffinity.leading,
       contentPadding: const EdgeInsets.only(
-          left: Sizes.p8, top: Sizes.p8, right: Sizes.p24, bottom: Sizes.p8),
+        left: Sizes.p8,
+        top: Sizes.p8,
+        right: Sizes.p24,
+        bottom: Sizes.p8,
+      ),
     );
   }
 }

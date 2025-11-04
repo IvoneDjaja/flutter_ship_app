@@ -12,18 +12,21 @@ class Epic {
     final id = json['id'];
     if (id is! String) {
       throw FormatException(
-          'Invalid JSON: required "id" field of type String in $json');
+        'Invalid JSON: required "id" field of type String in $json',
+      );
     }
     final name = json['epic'];
     if (name is! String) {
       throw FormatException(
-          'Invalid JSON: required "epic" field of type String in $json');
+        'Invalid JSON: required "epic" field of type String in $json',
+      );
     }
     final tasks = json['tasks'];
     // ignore:avoid-dynamic
     if (tasks is! List<dynamic>) {
       throw FormatException(
-          'Invalid JSON: required "tasks" field of type List in $json');
+        'Invalid JSON: required "tasks" field of type List in $json',
+      );
     }
     final decodedTasks = tasks.map((task) => Task.fromJson(task)).toList();
     return Epic(id: id, name: name, tasks: decodedTasks);

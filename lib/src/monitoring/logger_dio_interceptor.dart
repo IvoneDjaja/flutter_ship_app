@@ -22,10 +22,15 @@ class LoggerDioInterceptor implements Interceptor {
     final url =
         '${response.requestOptions.baseUrl}${response.requestOptions.path}';
     _logMessageAndClearStopwatch(
-        response.statusCode, url, '⬅️ Received response');
+      response.statusCode,
+      url,
+      '⬅️ Received response',
+    );
     if (response.requestOptions.queryParameters.isNotEmpty) {
-      log('Query params: ${response.requestOptions.queryParameters}',
-          name: _name);
+      log(
+        'Query params: ${response.requestOptions.queryParameters}',
+        name: _name,
+      );
     }
     return handler.next(response);
   }
@@ -42,7 +47,10 @@ class LoggerDioInterceptor implements Interceptor {
   }
 
   void _logMessageAndClearStopwatch(
-      int? statusCode, String url, String message) {
+    int? statusCode,
+    String url,
+    String message,
+  ) {
     final stopwatch = stopwatches[url];
     if (stopwatch != null) {
       stopwatch.stop();
@@ -57,7 +65,7 @@ class LoggerDioInterceptor implements Interceptor {
     final emoji = switch (statusCode) {
       != null && >= 200 && < 300 => '✅',
       != null && >= 300 && < 400 => '🟠',
-      _ => '❌'
+      _ => '❌',
     };
     if (statusCode != null) {
       log('$emoji $statusCode $emoji | ${milliseconds}ms | $url', name: _name);

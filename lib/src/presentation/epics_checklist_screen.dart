@@ -29,10 +29,9 @@ class EpicsChecklistScreen extends ConsumerWidget {
             gapH4,
             Text(
               'Release Checklist'.hardcoded,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodySmall!
-                  .copyWith(color: Colors.white),
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall!.copyWith(color: Colors.white),
             ),
           ],
         ),
@@ -47,7 +46,7 @@ class EpicsChecklistScreen extends ConsumerWidget {
               Icons.edit,
               semanticLabel: 'Edit this app'.hardcoded,
             ),
-          )
+          ),
         ],
       ),
       body: ResponsiveCenterScrollable(
@@ -96,7 +95,8 @@ class EpicListTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final completedCountAsync = ref.watch(
-        watchCompletedTasksCountProvider(appId: app.id, epicId: epic.id));
+      watchCompletedTasksCountProvider(appId: app.id, epicId: epic.id),
+    );
     // * default to 0 during loading or if there is an error
     final completedCount = completedCountAsync.valueOrNull ?? 0;
     return CustomCompletionListTile(

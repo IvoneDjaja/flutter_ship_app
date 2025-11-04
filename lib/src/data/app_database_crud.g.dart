@@ -13,14 +13,15 @@ String _$fetchAllEpicsAndTasksHash() =>
 @ProviderFor(fetchAllEpicsAndTasks)
 final fetchAllEpicsAndTasksProvider =
     AutoDisposeFutureProvider<List<Epic>>.internal(
-  fetchAllEpicsAndTasks,
-  name: r'fetchAllEpicsAndTasksProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$fetchAllEpicsAndTasksHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      fetchAllEpicsAndTasks,
+      name: r'fetchAllEpicsAndTasksProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$fetchAllEpicsAndTasksHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
@@ -32,9 +33,10 @@ String _$watchAppsListHash() => r'87b0024c5992f4c2502cd011093b6e05c53d871b';
 final watchAppsListProvider = AutoDisposeStreamProvider<List<App>>.internal(
   watchAppsList,
   name: r'watchAppsListProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$watchAppsListHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$watchAppsListHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
@@ -75,21 +77,15 @@ class WatchAppByIdFamily extends Family<AsyncValue<App?>> {
   const WatchAppByIdFamily();
 
   /// See also [watchAppById].
-  WatchAppByIdProvider call(
-    int id,
-  ) {
-    return WatchAppByIdProvider(
-      id,
-    );
+  WatchAppByIdProvider call(int id) {
+    return WatchAppByIdProvider(id);
   }
 
   @override
   WatchAppByIdProvider getProviderOverride(
     covariant WatchAppByIdProvider provider,
   ) {
-    return call(
-      provider.id,
-    );
+    return call(provider.id);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -110,24 +106,20 @@ class WatchAppByIdFamily extends Family<AsyncValue<App?>> {
 /// See also [watchAppById].
 class WatchAppByIdProvider extends AutoDisposeStreamProvider<App?> {
   /// See also [watchAppById].
-  WatchAppByIdProvider(
-    int id,
-  ) : this._internal(
-          (ref) => watchAppById(
-            ref as WatchAppByIdRef,
-            id,
-          ),
-          from: watchAppByIdProvider,
-          name: r'watchAppByIdProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$watchAppByIdHash,
-          dependencies: WatchAppByIdFamily._dependencies,
-          allTransitiveDependencies:
-              WatchAppByIdFamily._allTransitiveDependencies,
-          id: id,
-        );
+  WatchAppByIdProvider(int id)
+    : this._internal(
+        (ref) => watchAppById(ref as WatchAppByIdRef, id),
+        from: watchAppByIdProvider,
+        name: r'watchAppByIdProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$watchAppByIdHash,
+        dependencies: WatchAppByIdFamily._dependencies,
+        allTransitiveDependencies:
+            WatchAppByIdFamily._allTransitiveDependencies,
+        id: id,
+      );
 
   WatchAppByIdProvider._internal(
     super._createNotifier, {
@@ -186,7 +178,8 @@ mixin WatchAppByIdRef on AutoDisposeStreamProviderRef<App?> {
 }
 
 class _WatchAppByIdProviderElement
-    extends AutoDisposeStreamProviderElement<App?> with WatchAppByIdRef {
+    extends AutoDisposeStreamProviderElement<App?>
+    with WatchAppByIdRef {
   _WatchAppByIdProviderElement(super.provider);
 
   @override
@@ -201,9 +194,10 @@ String _$watchTotalTasksCountHash() =>
 final watchTotalTasksCountProvider = AutoDisposeStreamProvider<int>.internal(
   watchTotalTasksCount,
   name: r'watchTotalTasksCountProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$watchTotalTasksCountHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$watchTotalTasksCountHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
@@ -228,20 +222,14 @@ class WatchTasksForAppAndEpicFamily extends Family<AsyncValue<List<Task>>> {
     required int appId,
     required String epicId,
   }) {
-    return WatchTasksForAppAndEpicProvider(
-      appId: appId,
-      epicId: epicId,
-    );
+    return WatchTasksForAppAndEpicProvider(appId: appId, epicId: epicId);
   }
 
   @override
   WatchTasksForAppAndEpicProvider getProviderOverride(
     covariant WatchTasksForAppAndEpicProvider provider,
   ) {
-    return call(
-      appId: provider.appId,
-      epicId: provider.epicId,
-    );
+    return call(appId: provider.appId, epicId: provider.epicId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -263,27 +251,25 @@ class WatchTasksForAppAndEpicFamily extends Family<AsyncValue<List<Task>>> {
 class WatchTasksForAppAndEpicProvider
     extends AutoDisposeStreamProvider<List<Task>> {
   /// See also [watchTasksForAppAndEpic].
-  WatchTasksForAppAndEpicProvider({
-    required int appId,
-    required String epicId,
-  }) : this._internal(
-          (ref) => watchTasksForAppAndEpic(
-            ref as WatchTasksForAppAndEpicRef,
-            appId: appId,
-            epicId: epicId,
-          ),
-          from: watchTasksForAppAndEpicProvider,
-          name: r'watchTasksForAppAndEpicProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$watchTasksForAppAndEpicHash,
-          dependencies: WatchTasksForAppAndEpicFamily._dependencies,
-          allTransitiveDependencies:
-              WatchTasksForAppAndEpicFamily._allTransitiveDependencies,
+  WatchTasksForAppAndEpicProvider({required int appId, required String epicId})
+    : this._internal(
+        (ref) => watchTasksForAppAndEpic(
+          ref as WatchTasksForAppAndEpicRef,
           appId: appId,
           epicId: epicId,
-        );
+        ),
+        from: watchTasksForAppAndEpicProvider,
+        name: r'watchTasksForAppAndEpicProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$watchTasksForAppAndEpicHash,
+        dependencies: WatchTasksForAppAndEpicFamily._dependencies,
+        allTransitiveDependencies:
+            WatchTasksForAppAndEpicFamily._allTransitiveDependencies,
+        appId: appId,
+        epicId: epicId,
+      );
 
   WatchTasksForAppAndEpicProvider._internal(
     super._createNotifier, {
@@ -374,24 +360,15 @@ class WatchCompletedTasksCountFamily extends Family<AsyncValue<int>> {
   const WatchCompletedTasksCountFamily();
 
   /// See also [watchCompletedTasksCount].
-  WatchCompletedTasksCountProvider call({
-    required int appId,
-    String? epicId,
-  }) {
-    return WatchCompletedTasksCountProvider(
-      appId: appId,
-      epicId: epicId,
-    );
+  WatchCompletedTasksCountProvider call({required int appId, String? epicId}) {
+    return WatchCompletedTasksCountProvider(appId: appId, epicId: epicId);
   }
 
   @override
   WatchCompletedTasksCountProvider getProviderOverride(
     covariant WatchCompletedTasksCountProvider provider,
   ) {
-    return call(
-      appId: provider.appId,
-      epicId: provider.epicId,
-    );
+    return call(appId: provider.appId, epicId: provider.epicId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -412,27 +389,25 @@ class WatchCompletedTasksCountFamily extends Family<AsyncValue<int>> {
 /// See also [watchCompletedTasksCount].
 class WatchCompletedTasksCountProvider extends AutoDisposeStreamProvider<int> {
   /// See also [watchCompletedTasksCount].
-  WatchCompletedTasksCountProvider({
-    required int appId,
-    String? epicId,
-  }) : this._internal(
-          (ref) => watchCompletedTasksCount(
-            ref as WatchCompletedTasksCountRef,
-            appId: appId,
-            epicId: epicId,
-          ),
-          from: watchCompletedTasksCountProvider,
-          name: r'watchCompletedTasksCountProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$watchCompletedTasksCountHash,
-          dependencies: WatchCompletedTasksCountFamily._dependencies,
-          allTransitiveDependencies:
-              WatchCompletedTasksCountFamily._allTransitiveDependencies,
+  WatchCompletedTasksCountProvider({required int appId, String? epicId})
+    : this._internal(
+        (ref) => watchCompletedTasksCount(
+          ref as WatchCompletedTasksCountRef,
           appId: appId,
           epicId: epicId,
-        );
+        ),
+        from: watchCompletedTasksCountProvider,
+        name: r'watchCompletedTasksCountProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$watchCompletedTasksCountHash,
+        dependencies: WatchCompletedTasksCountFamily._dependencies,
+        allTransitiveDependencies:
+            WatchCompletedTasksCountFamily._allTransitiveDependencies,
+        appId: appId,
+        epicId: epicId,
+      );
 
   WatchCompletedTasksCountProvider._internal(
     super._createNotifier, {
@@ -509,5 +484,6 @@ class _WatchCompletedTasksCountProviderElement
   @override
   String? get epicId => (origin as WatchCompletedTasksCountProvider).epicId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

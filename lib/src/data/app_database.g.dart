@@ -11,20 +11,29 @@ class $AppsTable extends Apps with TableInfo<$AppsTable, AppData> {
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
-      'id', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
-      'name', aliasedName, false,
-      additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 100),
-      type: DriftSqlType.string,
-      requiredDuringInsert: true);
+    'name',
+    aliasedName,
+    false,
+    additionalChecks: GeneratedColumn.checkTextLength(
+      minTextLength: 1,
+      maxTextLength: 100,
+    ),
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [id, name];
   @override
@@ -33,8 +42,10 @@ class $AppsTable extends Apps with TableInfo<$AppsTable, AppData> {
   String get actualTableName => $name;
   static const String $name = 'apps';
   @override
-  VerificationContext validateIntegrity(Insertable<AppData> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<AppData> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
@@ -42,7 +53,9 @@ class $AppsTable extends Apps with TableInfo<$AppsTable, AppData> {
     }
     if (data.containsKey('name')) {
       context.handle(
-          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
     } else if (isInserting) {
       context.missing(_nameMeta);
     }
@@ -55,10 +68,16 @@ class $AppsTable extends Apps with TableInfo<$AppsTable, AppData> {
   AppData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return AppData(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
-      name: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}id'],
+          )!,
+      name:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}name'],
+          )!,
     );
   }
 
@@ -81,14 +100,13 @@ class AppData extends DataClass implements Insertable<AppData> {
   }
 
   AppsCompanion toCompanion(bool nullToAbsent) {
-    return AppsCompanion(
-      id: Value(id),
-      name: Value(name),
-    );
+    return AppsCompanion(id: Value(id), name: Value(name));
   }
 
-  factory AppData.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory AppData.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return AppData(
       id: serializer.fromJson<int>(json['id']),
@@ -104,10 +122,8 @@ class AppData extends DataClass implements Insertable<AppData> {
     };
   }
 
-  AppData copyWith({int? id, String? name}) => AppData(
-        id: id ?? this.id,
-        name: name ?? this.name,
-      );
+  AppData copyWith({int? id, String? name}) =>
+      AppData(id: id ?? this.id, name: name ?? this.name);
   AppData copyWithCompanion(AppsCompanion data) {
     return AppData(
       id: data.id.present ? data.id.value : this.id,
@@ -139,10 +155,8 @@ class AppsCompanion extends UpdateCompanion<AppData> {
     this.id = const Value.absent(),
     this.name = const Value.absent(),
   });
-  AppsCompanion.insert({
-    this.id = const Value.absent(),
-    required String name,
-  }) : name = Value(name);
+  AppsCompanion.insert({this.id = const Value.absent(), required String name})
+    : name = Value(name);
   static Insertable<AppData> custom({
     Expression<int>? id,
     Expression<String>? name,
@@ -154,10 +168,7 @@ class AppsCompanion extends UpdateCompanion<AppData> {
   }
 
   AppsCompanion copyWith({Value<int>? id, Value<String>? name}) {
-    return AppsCompanion(
-      id: id ?? this.id,
-      name: name ?? this.name,
-    );
+    return AppsCompanion(id: id ?? this.id, name: name ?? this.name);
   }
 
   @override
@@ -190,27 +201,40 @@ class $EpicsTable extends Epics with TableInfo<$EpicsTable, EpicData> {
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
-      'id', aliasedName, false,
-      additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 8),
-      type: DriftSqlType.string,
-      requiredDuringInsert: true,
-      $customConstraints: 'UNIQUE NOT NULL');
+    'id',
+    aliasedName,
+    false,
+    additionalChecks: GeneratedColumn.checkTextLength(
+      minTextLength: 1,
+      maxTextLength: 8,
+    ),
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    $customConstraints: 'UNIQUE NOT NULL',
+  );
   static const VerificationMeta _orderMeta = const VerificationMeta('order');
   @override
   late final GeneratedColumn<int> order = GeneratedColumn<int>(
-      'order', aliasedName, false,
-      type: DriftSqlType.int,
-      requiredDuringInsert: true,
-      $customConstraints: 'UNIQUE NOT NULL');
+    'order',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+    $customConstraints: 'UNIQUE NOT NULL',
+  );
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
-      'name', aliasedName, false,
-      additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 100),
-      type: DriftSqlType.string,
-      requiredDuringInsert: true);
+    'name',
+    aliasedName,
+    false,
+    additionalChecks: GeneratedColumn.checkTextLength(
+      minTextLength: 1,
+      maxTextLength: 100,
+    ),
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [id, order, name];
   @override
@@ -219,8 +243,10 @@ class $EpicsTable extends Epics with TableInfo<$EpicsTable, EpicData> {
   String get actualTableName => $name;
   static const String $name = 'epics';
   @override
-  VerificationContext validateIntegrity(Insertable<EpicData> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<EpicData> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
@@ -230,13 +256,17 @@ class $EpicsTable extends Epics with TableInfo<$EpicsTable, EpicData> {
     }
     if (data.containsKey('order')) {
       context.handle(
-          _orderMeta, order.isAcceptableOrUnknown(data['order']!, _orderMeta));
+        _orderMeta,
+        order.isAcceptableOrUnknown(data['order']!, _orderMeta),
+      );
     } else if (isInserting) {
       context.missing(_orderMeta);
     }
     if (data.containsKey('name')) {
       context.handle(
-          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
     } else if (isInserting) {
       context.missing(_nameMeta);
     }
@@ -249,12 +279,21 @@ class $EpicsTable extends Epics with TableInfo<$EpicsTable, EpicData> {
   EpicData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return EpicData(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
-      order: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}order'])!,
-      name: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      order:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}order'],
+          )!,
+      name:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}name'],
+          )!,
     );
   }
 
@@ -286,8 +325,10 @@ class EpicData extends DataClass implements Insertable<EpicData> {
     );
   }
 
-  factory EpicData.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory EpicData.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return EpicData(
       id: serializer.fromJson<String>(json['id']),
@@ -306,10 +347,10 @@ class EpicData extends DataClass implements Insertable<EpicData> {
   }
 
   EpicData copyWith({String? id, int? order, String? name}) => EpicData(
-        id: id ?? this.id,
-        order: order ?? this.order,
-        name: name ?? this.name,
-      );
+    id: id ?? this.id,
+    order: order ?? this.order,
+    name: name ?? this.name,
+  );
   EpicData copyWithCompanion(EpicsCompanion data) {
     return EpicData(
       id: data.id.present ? data.id.value : this.id,
@@ -355,9 +396,9 @@ class EpicsCompanion extends UpdateCompanion<EpicData> {
     required int order,
     required String name,
     this.rowid = const Value.absent(),
-  })  : id = Value(id),
-        order = Value(order),
-        name = Value(name);
+  }) : id = Value(id),
+       order = Value(order),
+       name = Value(name);
   static Insertable<EpicData> custom({
     Expression<String>? id,
     Expression<int>? order,
@@ -372,11 +413,12 @@ class EpicsCompanion extends UpdateCompanion<EpicData> {
     });
   }
 
-  EpicsCompanion copyWith(
-      {Value<String>? id,
-      Value<int>? order,
-      Value<String>? name,
-      Value<int>? rowid}) {
+  EpicsCompanion copyWith({
+    Value<String>? id,
+    Value<int>? order,
+    Value<String>? name,
+    Value<int>? rowid,
+  }) {
     return EpicsCompanion(
       id: id ?? this.id,
       order: order ?? this.order,
@@ -423,35 +465,53 @@ class $TasksTable extends Tasks with TableInfo<$TasksTable, TaskData> {
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
-      'id', aliasedName, false,
-      additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 8),
-      type: DriftSqlType.string,
-      requiredDuringInsert: true);
+    'id',
+    aliasedName,
+    false,
+    additionalChecks: GeneratedColumn.checkTextLength(
+      minTextLength: 1,
+      maxTextLength: 8,
+    ),
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   static const VerificationMeta _epicIdMeta = const VerificationMeta('epicId');
   @override
   late final GeneratedColumn<String> epicId = GeneratedColumn<String>(
-      'epic_id', aliasedName, false,
-      additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 8),
-      type: DriftSqlType.string,
-      requiredDuringInsert: true,
-      $customConstraints: 'NOT NULL REFERENCES epics(id)');
+    'epic_id',
+    aliasedName,
+    false,
+    additionalChecks: GeneratedColumn.checkTextLength(
+      minTextLength: 1,
+      maxTextLength: 8,
+    ),
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    $customConstraints: 'NOT NULL REFERENCES epics(id)',
+  );
   static const VerificationMeta _orderMeta = const VerificationMeta('order');
   @override
   late final GeneratedColumn<int> order = GeneratedColumn<int>(
-      'order', aliasedName, false,
-      type: DriftSqlType.int,
-      requiredDuringInsert: true,
-      $customConstraints: 'UNIQUE NOT NULL');
+    'order',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+    $customConstraints: 'UNIQUE NOT NULL',
+  );
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
-      'name', aliasedName, false,
-      additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 100),
-      type: DriftSqlType.string,
-      requiredDuringInsert: true);
+    'name',
+    aliasedName,
+    false,
+    additionalChecks: GeneratedColumn.checkTextLength(
+      minTextLength: 1,
+      maxTextLength: 100,
+    ),
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
   @override
   List<GeneratedColumn> get $columns => [id, epicId, order, name];
   @override
@@ -460,8 +520,10 @@ class $TasksTable extends Tasks with TableInfo<$TasksTable, TaskData> {
   String get actualTableName => $name;
   static const String $name = 'tasks';
   @override
-  VerificationContext validateIntegrity(Insertable<TaskData> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<TaskData> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
@@ -470,20 +532,26 @@ class $TasksTable extends Tasks with TableInfo<$TasksTable, TaskData> {
       context.missing(_idMeta);
     }
     if (data.containsKey('epic_id')) {
-      context.handle(_epicIdMeta,
-          epicId.isAcceptableOrUnknown(data['epic_id']!, _epicIdMeta));
+      context.handle(
+        _epicIdMeta,
+        epicId.isAcceptableOrUnknown(data['epic_id']!, _epicIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_epicIdMeta);
     }
     if (data.containsKey('order')) {
       context.handle(
-          _orderMeta, order.isAcceptableOrUnknown(data['order']!, _orderMeta));
+        _orderMeta,
+        order.isAcceptableOrUnknown(data['order']!, _orderMeta),
+      );
     } else if (isInserting) {
       context.missing(_orderMeta);
     }
     if (data.containsKey('name')) {
       context.handle(
-          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
+        _nameMeta,
+        name.isAcceptableOrUnknown(data['name']!, _nameMeta),
+      );
     } else if (isInserting) {
       context.missing(_nameMeta);
     }
@@ -496,14 +564,26 @@ class $TasksTable extends Tasks with TableInfo<$TasksTable, TaskData> {
   TaskData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return TaskData(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
-      epicId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}epic_id'])!,
-      order: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}order'])!,
-      name: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
+      id:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}id'],
+          )!,
+      epicId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}epic_id'],
+          )!,
+      order:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}order'],
+          )!,
+      name:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}name'],
+          )!,
     );
   }
 
@@ -518,11 +598,12 @@ class TaskData extends DataClass implements Insertable<TaskData> {
   final String epicId;
   final int order;
   final String name;
-  const TaskData(
-      {required this.id,
-      required this.epicId,
-      required this.order,
-      required this.name});
+  const TaskData({
+    required this.id,
+    required this.epicId,
+    required this.order,
+    required this.name,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -542,8 +623,10 @@ class TaskData extends DataClass implements Insertable<TaskData> {
     );
   }
 
-  factory TaskData.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory TaskData.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return TaskData(
       id: serializer.fromJson<String>(json['id']),
@@ -621,10 +704,10 @@ class TasksCompanion extends UpdateCompanion<TaskData> {
     required int order,
     required String name,
     this.rowid = const Value.absent(),
-  })  : id = Value(id),
-        epicId = Value(epicId),
-        order = Value(order),
-        name = Value(name);
+  }) : id = Value(id),
+       epicId = Value(epicId),
+       order = Value(order),
+       name = Value(name);
   static Insertable<TaskData> custom({
     Expression<String>? id,
     Expression<String>? epicId,
@@ -641,12 +724,13 @@ class TasksCompanion extends UpdateCompanion<TaskData> {
     });
   }
 
-  TasksCompanion copyWith(
-      {Value<String>? id,
-      Value<String>? epicId,
-      Value<int>? order,
-      Value<String>? name,
-      Value<int>? rowid}) {
+  TasksCompanion copyWith({
+    Value<String>? id,
+    Value<String>? epicId,
+    Value<int>? order,
+    Value<String>? name,
+    Value<int>? rowid,
+  }) {
     return TasksCompanion(
       id: id ?? this.id,
       epicId: epicId ?? this.epicId,
@@ -699,29 +783,42 @@ class $TaskStatusesTable extends TaskStatuses
   static const VerificationMeta _appIdMeta = const VerificationMeta('appId');
   @override
   late final GeneratedColumn<int> appId = GeneratedColumn<int>(
-      'app_id', aliasedName, false,
-      type: DriftSqlType.int,
-      requiredDuringInsert: true,
-      $customConstraints: 'NOT NULL REFERENCES apps(id)');
+    'app_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+    $customConstraints: 'NOT NULL REFERENCES apps(id)',
+  );
   static const VerificationMeta _taskIdMeta = const VerificationMeta('taskId');
   @override
   late final GeneratedColumn<String> taskId = GeneratedColumn<String>(
-      'task_id', aliasedName, false,
-      additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 8),
-      type: DriftSqlType.string,
-      requiredDuringInsert: true,
-      $customConstraints: 'NOT NULL REFERENCES tasks(id)');
-  static const VerificationMeta _completedMeta =
-      const VerificationMeta('completed');
+    'task_id',
+    aliasedName,
+    false,
+    additionalChecks: GeneratedColumn.checkTextLength(
+      minTextLength: 1,
+      maxTextLength: 8,
+    ),
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    $customConstraints: 'NOT NULL REFERENCES tasks(id)',
+  );
+  static const VerificationMeta _completedMeta = const VerificationMeta(
+    'completed',
+  );
   @override
   late final GeneratedColumn<bool> completed = GeneratedColumn<bool>(
-      'completed', aliasedName, false,
-      type: DriftSqlType.bool,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('CHECK ("completed" IN (0, 1))'),
-      defaultValue: const Constant(false));
+    'completed',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("completed" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
   @override
   List<GeneratedColumn> get $columns => [appId, taskId, completed];
   @override
@@ -730,25 +827,33 @@ class $TaskStatusesTable extends TaskStatuses
   String get actualTableName => $name;
   static const String $name = 'task_statuses';
   @override
-  VerificationContext validateIntegrity(Insertable<TaskStatusData> instance,
-      {bool isInserting = false}) {
+  VerificationContext validateIntegrity(
+    Insertable<TaskStatusData> instance, {
+    bool isInserting = false,
+  }) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('app_id')) {
       context.handle(
-          _appIdMeta, appId.isAcceptableOrUnknown(data['app_id']!, _appIdMeta));
+        _appIdMeta,
+        appId.isAcceptableOrUnknown(data['app_id']!, _appIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_appIdMeta);
     }
     if (data.containsKey('task_id')) {
-      context.handle(_taskIdMeta,
-          taskId.isAcceptableOrUnknown(data['task_id']!, _taskIdMeta));
+      context.handle(
+        _taskIdMeta,
+        taskId.isAcceptableOrUnknown(data['task_id']!, _taskIdMeta),
+      );
     } else if (isInserting) {
       context.missing(_taskIdMeta);
     }
     if (data.containsKey('completed')) {
-      context.handle(_completedMeta,
-          completed.isAcceptableOrUnknown(data['completed']!, _completedMeta));
+      context.handle(
+        _completedMeta,
+        completed.isAcceptableOrUnknown(data['completed']!, _completedMeta),
+      );
     }
     return context;
   }
@@ -759,12 +864,21 @@ class $TaskStatusesTable extends TaskStatuses
   TaskStatusData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return TaskStatusData(
-      appId: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}app_id'])!,
-      taskId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}task_id'])!,
-      completed: attachedDatabase.typeMapping
-          .read(DriftSqlType.bool, data['${effectivePrefix}completed'])!,
+      appId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.int,
+            data['${effectivePrefix}app_id'],
+          )!,
+      taskId:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.string,
+            data['${effectivePrefix}task_id'],
+          )!,
+      completed:
+          attachedDatabase.typeMapping.read(
+            DriftSqlType.bool,
+            data['${effectivePrefix}completed'],
+          )!,
     );
   }
 
@@ -778,8 +892,11 @@ class TaskStatusData extends DataClass implements Insertable<TaskStatusData> {
   final int appId;
   final String taskId;
   final bool completed;
-  const TaskStatusData(
-      {required this.appId, required this.taskId, required this.completed});
+  const TaskStatusData({
+    required this.appId,
+    required this.taskId,
+    required this.completed,
+  });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -797,8 +914,10 @@ class TaskStatusData extends DataClass implements Insertable<TaskStatusData> {
     );
   }
 
-  factory TaskStatusData.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
+  factory TaskStatusData.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return TaskStatusData(
       appId: serializer.fromJson<int>(json['appId']),
@@ -867,8 +986,8 @@ class TaskStatusesCompanion extends UpdateCompanion<TaskStatusData> {
     required String taskId,
     this.completed = const Value.absent(),
     this.rowid = const Value.absent(),
-  })  : appId = Value(appId),
-        taskId = Value(taskId);
+  }) : appId = Value(appId),
+       taskId = Value(taskId);
   static Insertable<TaskStatusData> custom({
     Expression<int>? appId,
     Expression<String>? taskId,
@@ -883,11 +1002,12 @@ class TaskStatusesCompanion extends UpdateCompanion<TaskStatusData> {
     });
   }
 
-  TaskStatusesCompanion copyWith(
-      {Value<int>? appId,
-      Value<String>? taskId,
-      Value<bool>? completed,
-      Value<int>? rowid}) {
+  TaskStatusesCompanion copyWith({
+    Value<int>? appId,
+    Value<String>? taskId,
+    Value<bool>? completed,
+    Value<int>? rowid,
+  }) {
     return TaskStatusesCompanion(
       appId: appId ?? this.appId,
       taskId: taskId ?? this.taskId,
@@ -936,8 +1056,12 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [apps, epics, tasks, taskStatuses];
+  List<DatabaseSchemaEntity> get allSchemaEntities => [
+    apps,
+    epics,
+    tasks,
+    taskStatuses,
+  ];
 }
 
 // **************************************************************************

@@ -18,14 +18,15 @@ String _$tasksChecklistControllerHash() =>
 @ProviderFor(TasksChecklistController)
 final tasksChecklistControllerProvider =
     AutoDisposeNotifierProvider<TasksChecklistController, void>.internal(
-  TasksChecklistController.new,
-  name: r'tasksChecklistControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$tasksChecklistControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      TasksChecklistController.new,
+      name: r'tasksChecklistControllerProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$tasksChecklistControllerHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$TasksChecklistController = AutoDisposeNotifier<void>;
 // ignore_for_file: type=lint

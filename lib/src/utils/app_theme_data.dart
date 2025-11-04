@@ -6,12 +6,14 @@ import 'package:flutter_ship_app/src/constants/app_sizes.dart';
 /// Custom theming for the app, based on FlexColorScheme.
 /// For more details, see: https://docs.flexcolorscheme.com/
 extension AppThemeData on ThemeData {
-  static ThemeData light() =>
-      FlexThemeData.light(scheme: AppColors.flexScheme, useMaterial3: false)
-          ._customAppTheme();
-  static ThemeData dark() =>
-      FlexThemeData.dark(scheme: AppColors.flexScheme, useMaterial3: false)
-          ._customAppTheme();
+  static ThemeData light() => FlexThemeData.light(
+    scheme: AppColors.flexScheme,
+    useMaterial3: false,
+  )._customAppTheme();
+  static ThemeData dark() => FlexThemeData.dark(
+    scheme: AppColors.flexScheme,
+    useMaterial3: false,
+  )._customAppTheme();
 
   ThemeData _customAppTheme() {
     // An updated theme with bigger text sizes
@@ -30,8 +32,10 @@ extension AppThemeData on ThemeData {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.all(Sizes.p16),
-          textStyle:
-              const TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500),
+          textStyle: const TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
       segmentedButtonTheme: SegmentedButtonThemeData(

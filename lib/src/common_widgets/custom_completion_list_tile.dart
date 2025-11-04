@@ -29,7 +29,9 @@ class CustomCompletionListTile extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(
-            horizontal: Sizes.p20, vertical: Sizes.p12),
+          horizontal: Sizes.p20,
+          vertical: Sizes.p12,
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

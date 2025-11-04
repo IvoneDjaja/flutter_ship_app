@@ -31,8 +31,9 @@ class AppStartupNotifier extends _$AppStartupNotifier {
     final db = ref.watch(appDatabaseProvider);
     try {
       // * Fetch JSON data template from the network
-      final jsonString =
-          await ref.watch(gistClientProvider).fetchJsonTemplate();
+      final jsonString = await ref
+          .watch(gistClientProvider)
+          .fetchJsonTemplate();
       final jsonData = jsonDecode(jsonString);
       // * Sync it with the data from the DB
       await db.loadOrUpdateFromTemplate(jsonData);
@@ -105,8 +106,11 @@ class AppStartupLoadingWidget extends StatelessWidget {
 }
 
 class AppStartupErrorWidget extends StatelessWidget {
-  const AppStartupErrorWidget(
-      {super.key, required this.message, required this.onRetry});
+  const AppStartupErrorWidget({
+    super.key,
+    required this.message,
+    required this.onRetry,
+  });
   final String message;
   final VoidCallback onRetry;
 

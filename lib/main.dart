@@ -20,10 +20,12 @@ void main() async {
   // * depends on it in order to load the themeMode
   await container.read(sharedPreferencesProvider.future);
   // run the app
-  runApp(UncontrolledProviderScope(
-    container: container,
-    child: MainApp(),
-  ));
+  runApp(
+    UncontrolledProviderScope(
+      container: container,
+      child: MainApp(),
+    ),
+  );
 }
 
 class MainApp extends ConsumerWidget {
@@ -49,45 +51,46 @@ class MainApp extends ConsumerWidget {
         // * https://docs.flutter.dev/cookbook/navigation/navigate-with-arguments
         return switch (settings.name) {
           AppRoutes.apps => MaterialPageRoute(
-              settings: settings,
-              builder: (_) => const AppsListScreen(),
-            ),
+            settings: settings,
+            builder: (_) => const AppsListScreen(),
+          ),
           AppRoutes.createApp => MaterialPageRoute(
-              settings: settings,
-              fullscreenDialog: true,
-              builder: (_) {
-                return const CreateOrEditAppScreen();
-              },
-            ),
+            settings: settings,
+            fullscreenDialog: true,
+            builder: (_) {
+              return const CreateOrEditAppScreen();
+            },
+          ),
           AppRoutes.editApp => MaterialPageRoute(
-              settings: settings,
-              fullscreenDialog: true,
-              builder: (_) {
-                final app = settings.arguments as App;
-                return CreateOrEditAppScreen(app: app);
-              },
-            ),
+            settings: settings,
+            fullscreenDialog: true,
+            builder: (_) {
+              final app = settings.arguments as App;
+              return CreateOrEditAppScreen(app: app);
+            },
+          ),
           AppRoutes.epics => MaterialPageRoute(
-              settings: settings,
-              builder: (_) {
-                final app = settings.arguments as App;
-                return EpicsChecklistScreen(app: app);
-              },
-            ),
+            settings: settings,
+            builder: (_) {
+              final app = settings.arguments as App;
+              return EpicsChecklistScreen(app: app);
+            },
+          ),
           AppRoutes.tasks => MaterialPageRoute(
-              settings: settings,
-              builder: (_) {
-                final args = settings.arguments as ({App app, Epic epic});
-                return TasksChecklistScreen(app: args.app, epic: args.epic);
-              },
-            ),
+            settings: settings,
+            builder: (_) {
+              final args = settings.arguments as ({App app, Epic epic});
+              return TasksChecklistScreen(app: args.app, epic: args.epic);
+            },
+          ),
           AppRoutes.settings => MaterialPageRoute(
-              settings: settings,
-              fullscreenDialog: true,
-              builder: (_) => const SettingsScreen(),
-            ),
-          _ =>
-            throw UnimplementedError('Route named ${settings.name} not found'),
+            settings: settings,
+            fullscreenDialog: true,
+            builder: (_) => const SettingsScreen(),
+          ),
+          _ => throw UnimplementedError(
+            'Route named ${settings.name} not found',
+          ),
         };
       },
       initialRoute: AppRoutes.apps,

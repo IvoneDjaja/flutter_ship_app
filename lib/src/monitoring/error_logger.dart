@@ -11,8 +11,12 @@ class ErrorLogger {
   // ignore:avoid-unnecessary-futures,avoid-redundant-async
   FutureOr<void> logException(Object exception, StackTrace? stackTrace) async {
     // TODO: Error monitoring
-    log(exception.toString(),
-        name: 'Exception', error: exception, stackTrace: stackTrace);
+    log(
+      exception.toString(),
+      name: 'Exception',
+      error: exception,
+      stackTrace: stackTrace,
+    );
   }
 }
 

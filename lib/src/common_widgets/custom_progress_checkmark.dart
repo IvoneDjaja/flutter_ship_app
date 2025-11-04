@@ -64,8 +64,9 @@ class _CustomProgressCheckmarkPainter extends CustomPainter {
     double sweepAngle = 2 * math.pi * sweepValue;
     canvas.drawArc(
       Rect.fromCircle(
-          center: size.center(Offset.zero),
-          radius: (size.width - strokeWidth) / 2),
+        center: size.center(Offset.zero),
+        radius: (size.width - strokeWidth) / 2,
+      ),
       -math.pi / 2, // Start angle at the top of the circle
       sweepAngle,
       true,
@@ -75,7 +76,8 @@ class _CustomProgressCheckmarkPainter extends CustomPainter {
     // Draw the checkmark if the circle is fully filled (value == 1)
     if (sweepValue == 1.0) {
       final checkPaint = Paint()
-        ..color = checkmarkColor // Use the same fill color for the checkmark
+        ..color =
+            checkmarkColor // Use the same fill color for the checkmark
         ..style = PaintingStyle.stroke
         ..strokeWidth = strokeWidth
         ..strokeCap = StrokeCap.square; // Round the ends of the checkmark

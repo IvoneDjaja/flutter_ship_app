@@ -18,14 +18,15 @@ String _$createEditAppControllerHash() =>
 @ProviderFor(CreateEditAppController)
 final createEditAppControllerProvider =
     AutoDisposeNotifierProvider<CreateEditAppController, void>.internal(
-  CreateEditAppController.new,
-  name: r'createEditAppControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$createEditAppControllerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      CreateEditAppController.new,
+      name: r'createEditAppControllerProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$createEditAppControllerHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$CreateEditAppController = AutoDisposeNotifier<void>;
 // ignore_for_file: type=lint

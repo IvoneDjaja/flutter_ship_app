@@ -39,7 +39,7 @@ class TasksChecklistScreen extends ConsumerWidget {
         child: ListView.separated(
           controller: scrollController,
           itemCount: tasks.length,
-          separatorBuilder: (_, __) => const Divider(height: 0.5),
+          separatorBuilder: (_, _) => const Divider(height: 0.5),
           itemBuilder: (_, index) {
             final task = tasks[index];
             return CheckboxTaskListTile(

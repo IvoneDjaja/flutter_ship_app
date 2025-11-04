@@ -6,21 +6,46 @@ part of 'gist_client.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$gistClientHash() => r'022a162a206e5f2c564b392f4e30347abc0d971f';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [gistClient].
 @ProviderFor(gistClient)
-final gistClientProvider = Provider<GistClient>.internal(
-  gistClient,
-  name: r'gistClientProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$gistClientHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const gistClientProvider = GistClientProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef GistClientRef = ProviderRef<GistClient>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class GistClientProvider
+    extends $FunctionalProvider<GistClient, GistClient, GistClient>
+    with $Provider<GistClient> {
+  const GistClientProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'gistClientProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$gistClientHash();
+
+  @$internal
+  @override
+  $ProviderElement<GistClient> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  GistClient create(Ref ref) {
+    return gistClient(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(GistClient value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<GistClient>(value),
+    );
+  }
+}
+
+String _$gistClientHash() => r'022a162a206e5f2c564b392f4e30347abc0d971f';

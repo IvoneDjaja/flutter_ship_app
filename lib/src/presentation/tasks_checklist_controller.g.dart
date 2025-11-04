@@ -6,6 +6,53 @@ part of 'tasks_checklist_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+/// Helper controller class for the TasksChecklistScreen widget.
+/// This class holds the business logic updating the task completion status
+/// using the underlying AppDatabase class for data persistence.
+/// More info here: https://codewithandrea.com/articles/flutter-presentation-layer/
+
+@ProviderFor(TasksChecklistController)
+const tasksChecklistControllerProvider = TasksChecklistControllerProvider._();
+
+/// Helper controller class for the TasksChecklistScreen widget.
+/// This class holds the business logic updating the task completion status
+/// using the underlying AppDatabase class for data persistence.
+/// More info here: https://codewithandrea.com/articles/flutter-presentation-layer/
+final class TasksChecklistControllerProvider
+    extends $NotifierProvider<TasksChecklistController, void> {
+  /// Helper controller class for the TasksChecklistScreen widget.
+  /// This class holds the business logic updating the task completion status
+  /// using the underlying AppDatabase class for data persistence.
+  /// More info here: https://codewithandrea.com/articles/flutter-presentation-layer/
+  const TasksChecklistControllerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'tasksChecklistControllerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$tasksChecklistControllerHash();
+
+  @$internal
+  @override
+  TasksChecklistController create() => TasksChecklistController();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(void value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<void>(value),
+    );
+  }
+}
+
 String _$tasksChecklistControllerHash() =>
     r'2172dadbfe6def254986394ce69e465955720ff6';
 
@@ -13,21 +60,22 @@ String _$tasksChecklistControllerHash() =>
 /// This class holds the business logic updating the task completion status
 /// using the underlying AppDatabase class for data persistence.
 /// More info here: https://codewithandrea.com/articles/flutter-presentation-layer/
-///
-/// Copied from [TasksChecklistController].
-@ProviderFor(TasksChecklistController)
-final tasksChecklistControllerProvider =
-    AutoDisposeNotifierProvider<TasksChecklistController, void>.internal(
-      TasksChecklistController.new,
-      name: r'tasksChecklistControllerProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$tasksChecklistControllerHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
 
-typedef _$TasksChecklistController = AutoDisposeNotifier<void>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$TasksChecklistController extends $Notifier<void> {
+  void build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    build();
+    final ref = this.ref as $Ref<void, void>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<void, void>,
+              void,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, null);
+  }
+}

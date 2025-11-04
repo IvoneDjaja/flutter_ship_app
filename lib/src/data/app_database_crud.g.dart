@@ -6,484 +6,348 @@ part of 'app_database_crud.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(fetchAllEpicsAndTasks)
+const fetchAllEpicsAndTasksProvider = FetchAllEpicsAndTasksProvider._();
+
+final class FetchAllEpicsAndTasksProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<Epic>>,
+          List<Epic>,
+          FutureOr<List<Epic>>
+        >
+    with $FutureModifier<List<Epic>>, $FutureProvider<List<Epic>> {
+  const FetchAllEpicsAndTasksProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'fetchAllEpicsAndTasksProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$fetchAllEpicsAndTasksHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<List<Epic>> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<List<Epic>> create(Ref ref) {
+    return fetchAllEpicsAndTasks(ref);
+  }
+}
+
 String _$fetchAllEpicsAndTasksHash() =>
     r'9f1ae6d89fd82c06d1544e6156b0f78ba83009f7';
 
-/// See also [fetchAllEpicsAndTasks].
-@ProviderFor(fetchAllEpicsAndTasks)
-final fetchAllEpicsAndTasksProvider =
-    AutoDisposeFutureProvider<List<Epic>>.internal(
-      fetchAllEpicsAndTasks,
-      name: r'fetchAllEpicsAndTasksProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$fetchAllEpicsAndTasksHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef FetchAllEpicsAndTasksRef = AutoDisposeFutureProviderRef<List<Epic>>;
-String _$watchAppsListHash() => r'87b0024c5992f4c2502cd011093b6e05c53d871b';
-
-/// See also [watchAppsList].
 @ProviderFor(watchAppsList)
-final watchAppsListProvider = AutoDisposeStreamProvider<List<App>>.internal(
-  watchAppsList,
-  name: r'watchAppsListProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$watchAppsListHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const watchAppsListProvider = WatchAppsListProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef WatchAppsListRef = AutoDisposeStreamProviderRef<List<App>>;
-String _$watchAppByIdHash() => r'0bb01b0976509e2d6b5e549523fd80bda5db3de9';
-
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [watchAppById].
-@ProviderFor(watchAppById)
-const watchAppByIdProvider = WatchAppByIdFamily();
-
-/// See also [watchAppById].
-class WatchAppByIdFamily extends Family<AsyncValue<App?>> {
-  /// See also [watchAppById].
-  const WatchAppByIdFamily();
-
-  /// See also [watchAppById].
-  WatchAppByIdProvider call(int id) {
-    return WatchAppByIdProvider(id);
-  }
-
-  @override
-  WatchAppByIdProvider getProviderOverride(
-    covariant WatchAppByIdProvider provider,
-  ) {
-    return call(provider.id);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'watchAppByIdProvider';
-}
-
-/// See also [watchAppById].
-class WatchAppByIdProvider extends AutoDisposeStreamProvider<App?> {
-  /// See also [watchAppById].
-  WatchAppByIdProvider(int id)
-    : this._internal(
-        (ref) => watchAppById(ref as WatchAppByIdRef, id),
-        from: watchAppByIdProvider,
-        name: r'watchAppByIdProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$watchAppByIdHash,
-        dependencies: WatchAppByIdFamily._dependencies,
-        allTransitiveDependencies:
-            WatchAppByIdFamily._allTransitiveDependencies,
-        id: id,
+final class WatchAppsListProvider
+    extends
+        $FunctionalProvider<AsyncValue<List<App>>, List<App>, Stream<List<App>>>
+    with $FutureModifier<List<App>>, $StreamProvider<List<App>> {
+  const WatchAppsListProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'watchAppsListProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
       );
 
-  WatchAppByIdProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.id,
-  }) : super.internal();
+  @override
+  String debugGetCreateSourceHash() => _$watchAppsListHash();
 
-  final int id;
+  @$internal
+  @override
+  $StreamProviderElement<List<App>> $createElement($ProviderPointer pointer) =>
+      $StreamProviderElement(pointer);
 
   @override
-  Override overrideWith(
-    Stream<App?> Function(WatchAppByIdRef provider) create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: WatchAppByIdProvider._internal(
-        (ref) => create(ref as WatchAppByIdRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        id: id,
-      ),
-    );
+  Stream<List<App>> create(Ref ref) {
+    return watchAppsList(ref);
+  }
+}
+
+String _$watchAppsListHash() => r'87b0024c5992f4c2502cd011093b6e05c53d871b';
+
+@ProviderFor(watchAppById)
+const watchAppByIdProvider = WatchAppByIdFamily._();
+
+final class WatchAppByIdProvider
+    extends $FunctionalProvider<AsyncValue<App?>, App?, Stream<App?>>
+    with $FutureModifier<App?>, $StreamProvider<App?> {
+  const WatchAppByIdProvider._({
+    required WatchAppByIdFamily super.from,
+    required int super.argument,
+  }) : super(
+         retry: null,
+         name: r'watchAppByIdProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$watchAppByIdHash();
+
+  @override
+  String toString() {
+    return r'watchAppByIdProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  AutoDisposeStreamProviderElement<App?> createElement() {
-    return _WatchAppByIdProviderElement(this);
+  $StreamProviderElement<App?> $createElement($ProviderPointer pointer) =>
+      $StreamProviderElement(pointer);
+
+  @override
+  Stream<App?> create(Ref ref) {
+    final argument = this.argument as int;
+    return watchAppById(ref, argument);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is WatchAppByIdProvider && other.id == id;
+    return other is WatchAppByIdProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, id.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin WatchAppByIdRef on AutoDisposeStreamProviderRef<App?> {
-  /// The parameter `id` of this provider.
-  int get id;
-}
+String _$watchAppByIdHash() => r'0bb01b0976509e2d6b5e549523fd80bda5db3de9';
 
-class _WatchAppByIdProviderElement
-    extends AutoDisposeStreamProviderElement<App?>
-    with WatchAppByIdRef {
-  _WatchAppByIdProviderElement(super.provider);
+final class WatchAppByIdFamily extends $Family
+    with $FunctionalFamilyOverride<Stream<App?>, int> {
+  const WatchAppByIdFamily._()
+    : super(
+        retry: null,
+        name: r'watchAppByIdProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  WatchAppByIdProvider call(int id) =>
+      WatchAppByIdProvider._(argument: id, from: this);
 
   @override
-  int get id => (origin as WatchAppByIdProvider).id;
+  String toString() => r'watchAppByIdProvider';
+}
+
+@ProviderFor(watchTotalTasksCount)
+const watchTotalTasksCountProvider = WatchTotalTasksCountProvider._();
+
+final class WatchTotalTasksCountProvider
+    extends $FunctionalProvider<AsyncValue<int>, int, Stream<int>>
+    with $FutureModifier<int>, $StreamProvider<int> {
+  const WatchTotalTasksCountProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'watchTotalTasksCountProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$watchTotalTasksCountHash();
+
+  @$internal
+  @override
+  $StreamProviderElement<int> $createElement($ProviderPointer pointer) =>
+      $StreamProviderElement(pointer);
+
+  @override
+  Stream<int> create(Ref ref) {
+    return watchTotalTasksCount(ref);
+  }
 }
 
 String _$watchTotalTasksCountHash() =>
     r'd67fbb7dedd7d558286b762e853128b950f337b0';
 
-/// See also [watchTotalTasksCount].
-@ProviderFor(watchTotalTasksCount)
-final watchTotalTasksCountProvider = AutoDisposeStreamProvider<int>.internal(
-  watchTotalTasksCount,
-  name: r'watchTotalTasksCountProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$watchTotalTasksCountHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef WatchTotalTasksCountRef = AutoDisposeStreamProviderRef<int>;
-String _$watchTasksForAppAndEpicHash() =>
-    r'cecb89be5c9405cdc56bd594f6ca67c672807364';
-
-/// See also [watchTasksForAppAndEpic].
 @ProviderFor(watchTasksForAppAndEpic)
-const watchTasksForAppAndEpicProvider = WatchTasksForAppAndEpicFamily();
+const watchTasksForAppAndEpicProvider = WatchTasksForAppAndEpicFamily._();
 
-/// See also [watchTasksForAppAndEpic].
-class WatchTasksForAppAndEpicFamily extends Family<AsyncValue<List<Task>>> {
-  /// See also [watchTasksForAppAndEpic].
-  const WatchTasksForAppAndEpicFamily();
+final class WatchTasksForAppAndEpicProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<Task>>,
+          List<Task>,
+          Stream<List<Task>>
+        >
+    with $FutureModifier<List<Task>>, $StreamProvider<List<Task>> {
+  const WatchTasksForAppAndEpicProvider._({
+    required WatchTasksForAppAndEpicFamily super.from,
+    required ({int appId, String epicId}) super.argument,
+  }) : super(
+         retry: null,
+         name: r'watchTasksForAppAndEpicProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [watchTasksForAppAndEpic].
-  WatchTasksForAppAndEpicProvider call({
-    required int appId,
-    required String epicId,
-  }) {
-    return WatchTasksForAppAndEpicProvider(appId: appId, epicId: epicId);
+  @override
+  String debugGetCreateSourceHash() => _$watchTasksForAppAndEpicHash();
+
+  @override
+  String toString() {
+    return r'watchTasksForAppAndEpicProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  WatchTasksForAppAndEpicProvider getProviderOverride(
-    covariant WatchTasksForAppAndEpicProvider provider,
-  ) {
-    return call(appId: provider.appId, epicId: provider.epicId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
+  $StreamProviderElement<List<Task>> $createElement($ProviderPointer pointer) =>
+      $StreamProviderElement(pointer);
 
   @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'watchTasksForAppAndEpicProvider';
-}
-
-/// See also [watchTasksForAppAndEpic].
-class WatchTasksForAppAndEpicProvider
-    extends AutoDisposeStreamProvider<List<Task>> {
-  /// See also [watchTasksForAppAndEpic].
-  WatchTasksForAppAndEpicProvider({required int appId, required String epicId})
-    : this._internal(
-        (ref) => watchTasksForAppAndEpic(
-          ref as WatchTasksForAppAndEpicRef,
-          appId: appId,
-          epicId: epicId,
-        ),
-        from: watchTasksForAppAndEpicProvider,
-        name: r'watchTasksForAppAndEpicProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$watchTasksForAppAndEpicHash,
-        dependencies: WatchTasksForAppAndEpicFamily._dependencies,
-        allTransitiveDependencies:
-            WatchTasksForAppAndEpicFamily._allTransitiveDependencies,
-        appId: appId,
-        epicId: epicId,
-      );
-
-  WatchTasksForAppAndEpicProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.appId,
-    required this.epicId,
-  }) : super.internal();
-
-  final int appId;
-  final String epicId;
-
-  @override
-  Override overrideWith(
-    Stream<List<Task>> Function(WatchTasksForAppAndEpicRef provider) create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: WatchTasksForAppAndEpicProvider._internal(
-        (ref) => create(ref as WatchTasksForAppAndEpicRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        appId: appId,
-        epicId: epicId,
-      ),
+  Stream<List<Task>> create(Ref ref) {
+    final argument = this.argument as ({int appId, String epicId});
+    return watchTasksForAppAndEpic(
+      ref,
+      appId: argument.appId,
+      epicId: argument.epicId,
     );
-  }
-
-  @override
-  AutoDisposeStreamProviderElement<List<Task>> createElement() {
-    return _WatchTasksForAppAndEpicProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
     return other is WatchTasksForAppAndEpicProvider &&
-        other.appId == appId &&
-        other.epicId == epicId;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, appId.hashCode);
-    hash = _SystemHash.combine(hash, epicId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin WatchTasksForAppAndEpicRef on AutoDisposeStreamProviderRef<List<Task>> {
-  /// The parameter `appId` of this provider.
-  int get appId;
+String _$watchTasksForAppAndEpicHash() =>
+    r'cecb89be5c9405cdc56bd594f6ca67c672807364';
 
-  /// The parameter `epicId` of this provider.
-  String get epicId;
-}
-
-class _WatchTasksForAppAndEpicProviderElement
-    extends AutoDisposeStreamProviderElement<List<Task>>
-    with WatchTasksForAppAndEpicRef {
-  _WatchTasksForAppAndEpicProviderElement(super.provider);
-
-  @override
-  int get appId => (origin as WatchTasksForAppAndEpicProvider).appId;
-  @override
-  String get epicId => (origin as WatchTasksForAppAndEpicProvider).epicId;
-}
-
-String _$watchCompletedTasksCountHash() =>
-    r'8efea8a3d400879056201c0f1fe8cfd7ed96ffb4';
-
-/// See also [watchCompletedTasksCount].
-@ProviderFor(watchCompletedTasksCount)
-const watchCompletedTasksCountProvider = WatchCompletedTasksCountFamily();
-
-/// See also [watchCompletedTasksCount].
-class WatchCompletedTasksCountFamily extends Family<AsyncValue<int>> {
-  /// See also [watchCompletedTasksCount].
-  const WatchCompletedTasksCountFamily();
-
-  /// See also [watchCompletedTasksCount].
-  WatchCompletedTasksCountProvider call({required int appId, String? epicId}) {
-    return WatchCompletedTasksCountProvider(appId: appId, epicId: epicId);
-  }
-
-  @override
-  WatchCompletedTasksCountProvider getProviderOverride(
-    covariant WatchCompletedTasksCountProvider provider,
-  ) {
-    return call(appId: provider.appId, epicId: provider.epicId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'watchCompletedTasksCountProvider';
-}
-
-/// See also [watchCompletedTasksCount].
-class WatchCompletedTasksCountProvider extends AutoDisposeStreamProvider<int> {
-  /// See also [watchCompletedTasksCount].
-  WatchCompletedTasksCountProvider({required int appId, String? epicId})
-    : this._internal(
-        (ref) => watchCompletedTasksCount(
-          ref as WatchCompletedTasksCountRef,
-          appId: appId,
-          epicId: epicId,
-        ),
-        from: watchCompletedTasksCountProvider,
-        name: r'watchCompletedTasksCountProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$watchCompletedTasksCountHash,
-        dependencies: WatchCompletedTasksCountFamily._dependencies,
-        allTransitiveDependencies:
-            WatchCompletedTasksCountFamily._allTransitiveDependencies,
-        appId: appId,
-        epicId: epicId,
+final class WatchTasksForAppAndEpicFamily extends $Family
+    with
+        $FunctionalFamilyOverride<
+          Stream<List<Task>>,
+          ({int appId, String epicId})
+        > {
+  const WatchTasksForAppAndEpicFamily._()
+    : super(
+        retry: null,
+        name: r'watchTasksForAppAndEpicProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
       );
 
-  WatchCompletedTasksCountProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.appId,
-    required this.epicId,
-  }) : super.internal();
-
-  final int appId;
-  final String? epicId;
+  WatchTasksForAppAndEpicProvider call({
+    required int appId,
+    required String epicId,
+  }) => WatchTasksForAppAndEpicProvider._(
+    argument: (appId: appId, epicId: epicId),
+    from: this,
+  );
 
   @override
-  Override overrideWith(
-    Stream<int> Function(WatchCompletedTasksCountRef provider) create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: WatchCompletedTasksCountProvider._internal(
-        (ref) => create(ref as WatchCompletedTasksCountRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        appId: appId,
-        epicId: epicId,
-      ),
-    );
+  String toString() => r'watchTasksForAppAndEpicProvider';
+}
+
+@ProviderFor(watchCompletedTasksCount)
+const watchCompletedTasksCountProvider = WatchCompletedTasksCountFamily._();
+
+final class WatchCompletedTasksCountProvider
+    extends $FunctionalProvider<AsyncValue<int>, int, Stream<int>>
+    with $FutureModifier<int>, $StreamProvider<int> {
+  const WatchCompletedTasksCountProvider._({
+    required WatchCompletedTasksCountFamily super.from,
+    required ({int appId, String? epicId}) super.argument,
+  }) : super(
+         retry: null,
+         name: r'watchCompletedTasksCountProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$watchCompletedTasksCountHash();
+
+  @override
+  String toString() {
+    return r'watchCompletedTasksCountProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  AutoDisposeStreamProviderElement<int> createElement() {
-    return _WatchCompletedTasksCountProviderElement(this);
+  $StreamProviderElement<int> $createElement($ProviderPointer pointer) =>
+      $StreamProviderElement(pointer);
+
+  @override
+  Stream<int> create(Ref ref) {
+    final argument = this.argument as ({int appId, String? epicId});
+    return watchCompletedTasksCount(
+      ref,
+      appId: argument.appId,
+      epicId: argument.epicId,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return other is WatchCompletedTasksCountProvider &&
-        other.appId == appId &&
-        other.epicId == epicId;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, appId.hashCode);
-    hash = _SystemHash.combine(hash, epicId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin WatchCompletedTasksCountRef on AutoDisposeStreamProviderRef<int> {
-  /// The parameter `appId` of this provider.
-  int get appId;
+String _$watchCompletedTasksCountHash() =>
+    r'8efea8a3d400879056201c0f1fe8cfd7ed96ffb4';
 
-  /// The parameter `epicId` of this provider.
-  String? get epicId;
-}
+final class WatchCompletedTasksCountFamily extends $Family
+    with $FunctionalFamilyOverride<Stream<int>, ({int appId, String? epicId})> {
+  const WatchCompletedTasksCountFamily._()
+    : super(
+        retry: null,
+        name: r'watchCompletedTasksCountProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
 
-class _WatchCompletedTasksCountProviderElement
-    extends AutoDisposeStreamProviderElement<int>
-    with WatchCompletedTasksCountRef {
-  _WatchCompletedTasksCountProviderElement(super.provider);
+  WatchCompletedTasksCountProvider call({required int appId, String? epicId}) =>
+      WatchCompletedTasksCountProvider._(
+        argument: (appId: appId, epicId: epicId),
+        from: this,
+      );
 
   @override
-  int get appId => (origin as WatchCompletedTasksCountProvider).appId;
-  @override
-  String? get epicId => (origin as WatchCompletedTasksCountProvider).epicId;
+  String toString() => r'watchCompletedTasksCountProvider';
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

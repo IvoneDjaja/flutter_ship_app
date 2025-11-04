@@ -9,7 +9,6 @@ import 'package:flutter_ship_app/src/constants/app_sizes.dart';
 import 'package:flutter_ship_app/src/data/app_database.dart';
 import 'package:flutter_ship_app/src/data/app_database_crud.dart';
 import 'package:flutter_ship_app/src/data/gist_client.dart';
-import 'package:flutter_ship_app/src/utils/package_info_provider.dart';
 import 'package:flutter_ship_app/src/utils/string_hardcoded.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -23,8 +22,6 @@ class AppStartupNotifier extends _$AppStartupNotifier {
   Future<bool> build() async {
     // Initially, load the database from JSON
     await _updateDatabaseFromJsonTemplate();
-    // Preload any other FutureProviders what will be used with requireValue later
-    await ref.watch(packageInfoProvider.future);
     // return true (workaround for https://github.com/rrousselGit/riverpod/issues/4282)
     return true;
   }

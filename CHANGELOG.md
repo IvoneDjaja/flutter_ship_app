@@ -1,3 +1,11 @@
+## 0.4.0
+
+- Use Dart 3.8 formatter
+- Update Android project to Gradle 9.0, Kotlin 2.2
+- Update to Drift 2.29.0
+- Update to Riverpod 3.0.3
+- Update to latest packages
+
 ## 0.3.7
 
 - Regenerate android project with Flutter 3.29 (new `.gradle.kts` syntax)

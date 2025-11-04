@@ -16,6 +16,7 @@ migrate_working_dir/
 *.iml
 *.ipr
 *.iws
+.idea/caches/
 .idea/libraries/
 .idea/*.xml
 android/.idea/**/*.xml

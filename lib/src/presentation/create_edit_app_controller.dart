@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter_ship_app/src/data/app_database.dart';
 import 'package:flutter_ship_app/src/data/app_database_crud.dart';
 import 'package:flutter_ship_app/src/domain/app.dart';
+import 'package:flutter_ship_app/src/monitoring/analytics_facade.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'create_edit_app_controller.g.dart';
@@ -21,18 +24,26 @@ class CreateEditAppController extends _$CreateEditAppController {
 
   Future<void> createOrEditApp(App? existingApp, String newName) async {
     final db = ref.read(appDatabaseProvider);
+    final analyticsFacade = ref.read(analyticsFacadeProvider);
     // * Update the DB
     if (existingApp != null) {
       await db.editAppName(appId: existingApp.id, newName: newName);
     } else {
       await db.createNewApp(name: newName);
     }
-    // TODO: Analytics
+    // * Analytics code
+    if (existingApp != null) {
+      unawaited(analyticsFacade.trackAppUpdated());
+    } else {
+      unawaited(analyticsFacade.trackAppCreated());
+    }
   }
 
   Future<void> deleteAppById(int appId) async {
-    await ref.read(appDatabaseProvider).deleteAppById(appId);
-    // TODO: Analytics
+    final db = ref.read(appDatabaseProvider);
+    final analyticsFacade = ref.read(analyticsFacadeProvider);
+    await db.deleteAppById(appId);
+    unawaited(analyticsFacade.trackAppDeleted());
   }
 }
 

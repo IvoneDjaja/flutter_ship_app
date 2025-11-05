@@ -54,7 +54,7 @@ final class CreateEditAppControllerProvider
 }
 
 String _$createEditAppControllerHash() =>
-    r'a64dd239729ce80bc329541b48f8e5c493bd07f7';
+    r'633aa41acc6c294260f9d4759e38c8ee8ba52b11';
 
 /// Helper controller class for the CreateEditAppScreen widget.
 /// This class holds the business logic for creating, editing, and deleting apps

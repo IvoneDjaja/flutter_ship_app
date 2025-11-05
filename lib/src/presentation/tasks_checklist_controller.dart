@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter_ship_app/src/data/app_database.dart';
 import 'package:flutter_ship_app/src/data/app_database_crud.dart';
+import 'package:flutter_ship_app/src/monitoring/analytics_facade.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'tasks_checklist_controller.g.dart';
@@ -24,13 +27,17 @@ class TasksChecklistController extends _$TasksChecklistController {
     required bool isCompleted,
   }) async {
     final db = ref.read(appDatabaseProvider);
+    final analyticsFacade = ref.read(analyticsFacadeProvider);
     await db.updateTaskCompletionStatus(
       appId: appId,
       taskId: taskId,
       isCompleted: isCompleted,
     );
     if (isCompleted) {
-      // TODO: Analytics
+      final completedTasksCount = await db.fetchCompletedTasksCount();
+      unawaited(
+        analyticsFacade.trackTaskCompleted(completedTasksCount),
+      );
     }
   }
 }

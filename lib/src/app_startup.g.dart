@@ -40,7 +40,7 @@ final class AppStartupNotifierProvider
 }
 
 String _$appStartupNotifierHash() =>
-    r'c6a9e90fd4d7b1aac0325bafcd34f6fa3dc0597e';
+    r'3675e8a77193a8334c8bdbce22f735deda97b67b';
 
 /// App startup provider and widget (below)
 /// For more info, read: https://codewithandrea.com/articles/robust-app-initialization-riverpod/
